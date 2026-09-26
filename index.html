@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#28aeb0">
 <title>Ficha de Emergência</title>
 <script>
 /* ===== EDITE SOMENTE ESTA PARTE ===== */
@@ -9,29 +11,129 @@ const ficha = {
  nome: "João Vicente",
  nascimento: "20/03/2020",
  tipoSanguineo: "O+",
+
  telefonePrincipal: "5521964196900",
  responsavelPrincipal: "Fernanda Neves",
  telefonePrincipalExibicao: "(21) 96419-6900",
+
+ telefoneAlternativo: "5521979098054",
  responsavelAlternativo: "Sidnei Júnior",
  telefoneAlternativoExibicao: "(21) 97909-8054",
+
  alergias: "Não possui alergias.",
  cuidados: "Não administrar medicamentos sem contato com o responsável.",
- condicoesMedicas: "Bronquite e asma",
+ condicoesMedicas: "Bronquite e asma.",
  observacoes: "Em caso de emergência, entrar em contato imediatamente com um dos responsáveis.",
- informacaoImportante: "Informação importante",
+
  avatar: "👦🏻"
 };
 /* ===== NÃO PRECISA ALTERAR ABAIXO ===== */
 </script>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#eef2f6;color:#252a36}.top{background:#c92f3d;color:#fff;text-align:center;padding:28px 18px 34px}.top h1{font-size:20px}.cross{font-size:34px;font-weight:bold}.card{max-width:520px;margin:-16px auto 30px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 30px #0002}.profile{text-align:center;padding:30px 22px 16px}.avatar{width:82px;height:82px;border:3px solid #c92f3d;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:auto;font-size:42px}.name{font-size:21px;font-weight:800;margin:18px 0 5px}.sub{font-size:13px;color:#7a8290}.badge{display:inline-block;padding:6px 10px;border-radius:15px;font-size:12px;margin:12px 3px 3px;background:#e8f6ee;color:#26734d}.alert{background:#fde8eb;color:#a52838}.actions{display:flex;gap:10px;padding:0 18px 20px}.btn{flex:1;text-decoration:none;color:#fff;text-align:center;font-weight:bold;padding:16px 8px;border-radius:10px;font-size:14px}.call{background:#df2e35}.whatsapp{background:#16a34a}.section{margin:0 18px 18px;padding:20px;border-radius:12px;background:#f7f8fb}.urgent{background:#fff4f5}.section h2{font-size:19px;color:#a52838;margin:0 0 18px}.item{margin:14px 0}.item strong{display:block;font-size:14px;margin-bottom:4px}.item span{font-size:13px;color:#6d7480;line-height:1.45}.footer{text-align:center;color:#8a9099;font-size:11px;padding:2px 20px 22px}@media(max-width:480px){.card{margin:-16px 10px 20px}}
-</style></head>
-<body><header class="top"><div class="cross">✚</div><h1>FICHA DE EMERGÊNCIA</h1></header>
-<main class="card"><section class="profile"><div class="avatar" id="avatar"></div><div class="name" id="nome"></div><div class="sub" id="basicos"></div><span class="badge">Ficha ativa</span><span class="badge alert" id="info"></span></section>
-<div class="actions"><a class="btn call" id="ligar">☎ Ligar para o responsável</a><a class="btn whatsapp" id="whatsapp">● WhatsApp</a></div>
-<section class="section urgent"><h2>⚠ Atenção imediata</h2><div class="item"><strong>🩹 Alergias</strong><span id="alergias"></span></div><div class="item"><strong>⚠ Cuidados importantes</strong><span id="cuidados"></span></div><div class="item"><strong>🩺 Condições médicas</strong><span id="condicoes"></span></div></section>
-<section class="section"><h2>👨‍👩‍👧 Contato de emergência</h2><div class="item"><strong>Responsável</strong><span id="principal"></span></div><div class="item"><strong>Contato alternativo</strong><span id="alternativo"></span></div><div class="item"><strong>Observações</strong><span id="observacoes"></span></div></section>
-<div class="footer">Ficha de emergência • JV.PRIME3D<br>Informações fornecidas pelo responsável.</div></main>
+:root{
+ --teal:#29afb0;--teal2:#61cbc5;--navy:#073f5b;--muted:#698397;
+ --pink:#ef5d82;--green:#1ead72;--orange:#ec991e;--purple:#6b50b5;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#effbfc;color:var(--navy)}
+.hero{background:linear-gradient(135deg,var(--teal),var(--teal2));color:white;text-align:center;padding:26px 15px 43px;border-radius:0 0 45% 12%}
+.hero-row{display:flex;align-items:center;justify-content:center;gap:12px}
+.cross{width:52px;height:52px;border-radius:50%;background:white;color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold}
+.hero h1{margin:0;font-size:23px}.hero p{margin:6px 0 0;font-size:11px;letter-spacing:3.5px}
+.wrap{max-width:560px;margin:-22px auto 25px;padding:0 12px}
+.card{background:white;border-radius:24px;margin-bottom:14px;box-shadow:0 7px 25px rgba(9,93,105,.10)}
+.profile{padding:22px}
+.identity{display:flex;gap:16px;align-items:center}
+.avatar{width:91px;height:91px;flex:0 0 91px;border-radius:50%;border:5px solid #f58da7;background:#fff5f8;display:flex;align-items:center;justify-content:center;font-size:46px}
+.identity-info{flex:1}.name{font-size:25px;font-weight:900;margin-bottom:12px}
+.quick{display:grid;grid-template-columns:1.25fr .75fr;gap:8px}
+.quick div{background:#e3f7f8;border-radius:13px;padding:10px;font-size:11px}
+.quick .blood{background:#fff0f4;color:#ae2347}
+.quick strong{display:block;font-size:17px;margin-top:3px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}
+.btn{padding:14px 7px;border-radius:15px;text-align:center;text-decoration:none;color:white;font-size:14px;font-weight:900}
+.call{background:linear-gradient(135deg,#18a777,#38bf84)}.wa{background:linear-gradient(135deg,#20ad58,#55c980)}
+.contacts{padding:19px;background:linear-gradient(135deg,#e8f9fb,#fbffff)}
+.title{font-size:16px;font-weight:900;margin:0 0 13px}
+.contact{display:flex;align-items:center;gap:10px;background:white;padding:12px;border-radius:15px;margin-top:8px}
+.person{width:40px;height:40px;border-radius:50%;background:#ffe8ef;display:flex;align-items:center;justify-content:center;font-size:20px}
+.person.blue{background:#e5f7ff}.contact-text{flex:1;min-width:0}.contact-text strong{display:block;font-size:14px}.contact-text span{font-size:12px;color:var(--muted)}
+.small-actions{display:flex;gap:5px}.round{width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;font-weight:bold}
+.phone{background:#18a8ce}.whatsapp{background:#19ad55}
+.info{padding:17px 18px;display:flex;gap:14px;align-items:flex-start}
+.icon{width:48px;height:48px;flex:0 0 48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:23px}
+.info h2{font-size:15px;margin:2px 0 5px;text-transform:uppercase}.info p{margin:0;font-size:14px;line-height:1.42;color:#173f59}
+.allergy{background:#fff0f4}.allergy .icon{background:#ffdbe5}.allergy h2{color:#c92550}
+.medical{background:#fff5df}.medical .icon{background:#ffe7b7}.medical h2{color:#cc7800}
+.care{background:#eaf8f2}.care .icon{background:#cdeee2}.care h2{color:#12855e}
+.notes{background:#f1edff}.notes .icon{background:#dfd7ff}.notes h2{color:#6446ad}
+.footer{text-align:center;padding:14px 10px 27px}.brand{font-size:21px;font-weight:900}.nfc{font-size:10px;letter-spacing:4px;margin-top:4px}.legal{font-size:9px;color:#81939e;margin-top:11px}
+@media(max-width:420px){.hero h1{font-size:19px}.hero p{letter-spacing:2.2px}.avatar{width:77px;height:77px;flex-basis:77px;font-size:38px}.name{font-size:21px}.quick{grid-template-columns:1fr}.contact-text strong{font-size:13px}.contact-text span{font-size:11px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-row"><div class="cross">✚</div><div><h1>FICHA DE EMERGÊNCIA</h1><p>INFORMAÇÕES IMPORTANTES</p></div></div></header>
+
+<main class="wrap">
+<section class="card profile">
+ <div class="identity">
+  <div class="avatar" id="avatar"></div>
+  <div class="identity-info">
+   <div class="name" id="nome"></div>
+   <div class="quick">
+    <div>📅 Nascimento<strong id="nascimento"></strong></div>
+    <div class="blood">🩸 Tipo sanguíneo<strong id="sangue"></strong></div>
+   </div>
+  </div>
+ </div>
+ <div class="actions"><a class="btn call" id="ligar">☎ LIGAR</a><a class="btn wa" id="whatsapp">◉ WHATSAPP</a></div>
+</section>
+
+<section class="card contacts">
+ <h2 class="title">👥 CONTATOS DE EMERGÊNCIA</h2>
+ <div class="contact">
+  <div class="person">👤</div><div class="contact-text"><strong id="principalNome"></strong><span id="principalTel"></span></div>
+  <div class="small-actions"><a class="round phone" id="tel1">☎</a><a class="round whatsapp" id="wa1">◉</a></div>
+ </div>
+ <div class="contact">
+  <div class="person blue">👤</div><div class="contact-text"><strong id="alternativoNome"></strong><span id="alternativoTel"></span></div>
+  <div class="small-actions"><a class="round phone" id="tel2">☎</a><a class="round whatsapp" id="wa2">◉</a></div>
+ </div>
+</section>
+
+<section class="card info allergy"><div class="icon">⚠️</div><div><h2>Alergias</h2><p id="alergias"></p></div></section>
+<section class="card info medical"><div class="icon">🫀</div><div><h2>Condições médicas</h2><p id="condicoes"></p></div></section>
+<section class="card info care"><div class="icon">🛡️</div><div><h2>Cuidados especiais</h2><p id="cuidados"></p></div></section>
+<section class="card info notes"><div class="icon">📋</div><div><h2>Observações</h2><p id="observacoes"></p></div></section>
+
+<footer class="footer"><div class="brand">JV.PRIME3D</div><div class="nfc">IDENTIFICAÇÃO NFC</div><div class="legal">Informações fornecidas pelo responsável.</div></footer>
+</main>
+
 <script>
-avatar.textContent=ficha.avatar;nome.textContent=ficha.nome;basicos.textContent=`Nascimento: ${ficha.nascimento} • Tipo sanguíneo: ${ficha.tipoSanguineo}`;info.textContent=ficha.informacaoImportante;alergias.textContent=ficha.alergias;cuidados.textContent=ficha.cuidados;condicoes.textContent=ficha.condicoesMedicas;principal.textContent=`${ficha.responsavelPrincipal} • ${ficha.telefonePrincipalExibicao}`;alternativo.textContent=`${ficha.responsavelAlternativo} • ${ficha.telefoneAlternativoExibicao}`;observacoes.textContent=ficha.observacoes;ligar.href=`tel:+${ficha.telefonePrincipal}`;whatsapp.href=`https://wa.me/${ficha.telefonePrincipal}`;
-</script></body></html>
+const el=id=>document.getElementById(id);
+el("avatar").textContent=ficha.avatar;
+el("nome").textContent=ficha.nome;
+el("nascimento").textContent=ficha.nascimento;
+el("sangue").textContent=ficha.tipoSanguineo;
+el("alergias").textContent=ficha.alergias;
+el("condicoes").textContent=ficha.condicoesMedicas;
+el("cuidados").textContent=ficha.cuidados;
+el("observacoes").textContent=ficha.observacoes;
+el("principalNome").textContent=ficha.responsavelPrincipal;
+el("principalTel").textContent=ficha.telefonePrincipalExibicao;
+el("alternativoNome").textContent=ficha.responsavelAlternativo;
+el("alternativoTel").textContent=ficha.telefoneAlternativoExibicao;
+
+const pTel=`tel:+${ficha.telefonePrincipal}`, pWa=`https://wa.me/${ficha.telefonePrincipal}`;
+el("ligar").href=pTel; el("whatsapp").href=pWa; el("tel1").href=pTel; el("wa1").href=pWa;
+
+if(ficha.telefoneAlternativo){
+ el("tel2").href=`tel:+${ficha.telefoneAlternativo}`;
+ el("wa2").href=`https://wa.me/${ficha.telefoneAlternativo}`;
+}else{
+ el("tel2").style.display="none";el("wa2").style.display="none";
+}
+</script>
+</body>
+</html>
